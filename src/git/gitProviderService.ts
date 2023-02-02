@@ -1378,6 +1378,12 @@ export class GitProviderService implements Disposable {
 	}
 
 	@log()
+	async getFirstCommitSha(repoPath: string | Uri): Promise<string | undefined> {
+		const { provider, path } = this.getProvider(repoPath);
+		return provider.getFirstCommitSha(path);
+	}
+
+	@log()
 	getCommitBranches(
 		repoPath: string | Uri,
 		ref: string,
